@@ -33,15 +33,14 @@ void TaskManager::sortByPriority() {
 void TaskManager::saveToFile(const std::string& filename) const {
     std::ofstream ofs(filename);
     for (const auto& task : tasks) {
-        ofs << task->serialize() << "\n";
+        task->serialize(ofs);
     }
 }
 
 void TaskManager::loadFromFile(const std::string& filename) {
     std::ifstream ifs(filename);
-    std::string line;
-    while (std::getline(ifs, line)) {
-        addTask(std::make_unique<Task>(Task::deserialize(line)));
+    while (ifs.peek != EOF) {
+        addTask(std::make_unique<Task>(Task::deserialize(ifs)));
     }
 }
 
