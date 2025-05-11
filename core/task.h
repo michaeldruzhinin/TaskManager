@@ -35,5 +35,5 @@ public:
     void serialize(std::ostream& out) const;
 
     // Десериализация
-    void deserialize(std::istream& in);
+    static Task deserialize(std::istream& in);
 };

@@ -41,7 +41,7 @@ void Task::serialize(std::ostream& out) const {
         << completed << '\n';
 }
 
-// Десериализация
+// Десериализация(устаревшая)
 void Task::deserialize(std::istream& in) {
     std::getline(in, title);
     std::getline(in, description);
@@ -49,3 +49,22 @@ void Task::deserialize(std::istream& in) {
     in >> completed;
     in.ignore(); // убрать перевод строки после чтения completed
 }
+
+// Десериализация
+Task Task::deserialize(std::istream& in) {
+    std::string title, description;
+    int priority;
+    bool completed;
+
+    std::getline(in, title);
+    std::getline(in, description);
+    in >> priority;
+    in >> completed;
+    in.ignore(); // убрать \n после completed
+
+    Task task(title, description, priority);
+    if (completed) task.markComplete();
+    return task;
+}
+
+
