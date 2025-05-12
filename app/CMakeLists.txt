@@ -3,4 +3,5 @@ add_executable(TaskManagerApp
 )
 
 target_link_libraries(TaskManagerApp PRIVATE core)
-#target_link_libraries(TaskManagerApp PRIVATE gui core Qt6::Widgets)
+
+target_link_libraries(TaskManagerApp PRIVATE gui core Qt6::Widgets)
