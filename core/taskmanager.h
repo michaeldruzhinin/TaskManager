@@ -14,6 +14,7 @@ public:
     void listTasks(bool showCompleted = true) const;  //Выводит на экран список задач
     void sortByPriority();
 
+    void completeTask(std::size_t index);
     void saveToFile(const std::string& filename) const; //Сохраняет все задачи в файл
     void loadFromFile(const std::string& filename); //Загружает задачи из файла.
 };
