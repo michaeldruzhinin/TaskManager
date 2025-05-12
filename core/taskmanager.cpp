@@ -13,13 +13,22 @@ void TaskManager::removeTask(std::size_t index) {
     }
 }
 
+
+void TaskManager::completeTask(std::size_t index) {
+    if (index < tasks.size()) {
+        tasks[index]->markComplete();  
+    }
+}
+
 void TaskManager::listTasks(bool showCompleted) const {
     for (std::size_t i = 0; i < tasks.size(); ++i) {
         const Task& task = *tasks[i];
         if (showCompleted || !task.isCompleted()) {
             std::cout << i << ") " << task.getTitle()
-                << " [" << (task.getPriority() == 2 ? "High" : task.getPriority() == 1 ? "Medium" : "Low") << "]"
-                << (task.isCompleted() ? " (Completed)" : "") << "\n";
+                << " [" << (task.getPriority() == 2 ? "High" :
+                    task.getPriority() == 1 ? "Medium" : "Low") << "]"
+                << (task.isCompleted() ? " (Completed)" : "") << "\n"
+                << "    → " << task.getDescription() << "\n";
         }
     }
 }
@@ -39,7 +48,7 @@ void TaskManager::saveToFile(const std::string& filename) const {
 
 void TaskManager::loadFromFile(const std::string& filename) {
     std::ifstream ifs(filename);
-    while (ifs.peek != EOF) {
+    while (ifs.peek() != EOF) {
         addTask(std::make_unique<Task>(Task::deserialize(ifs)));
     }
 }
