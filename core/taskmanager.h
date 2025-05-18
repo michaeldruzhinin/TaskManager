@@ -17,5 +17,7 @@ public:
     void completeTask(std::size_t index);
     void saveToFile(const std::string& filename) const; //Сохраняет все задачи в файл
     void loadFromFile(const std::string& filename); //Загружает задачи из файла.
+
+    const std::vector<std::unique_ptr<Task>>& getTasks() const;
 };
 

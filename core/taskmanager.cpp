@@ -53,3 +53,6 @@ void TaskManager::loadFromFile(const std::string& filename) {
     }
 }
 
+const std::vector<std::unique_ptr<Task>>& TaskManager::getTasks() const {
+    return tasks;
+}
