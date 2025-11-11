@@ -1,7 +1,5 @@
 #pragma once
 // Заголовочный файл
-
-//идет работа!!!
 #include <string>
 #include <fstream>
 

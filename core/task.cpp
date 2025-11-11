@@ -1,4 +1,4 @@
-// Реализация будет здесь
+
 // Конструктор
 #include "task.h"
 Task::Task(const std::string& title, const std::string& description, int priority)

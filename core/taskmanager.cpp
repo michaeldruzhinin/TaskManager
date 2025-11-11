@@ -35,7 +35,7 @@ void TaskManager::listTasks(bool showCompleted) const {
 
 void TaskManager::sortByPriority() {
     std::sort(tasks.begin(), tasks.end(), [](const std::unique_ptr<Task>& a, const std::unique_ptr<Task>& b) {
-        return a->getPriority() > b->getPriority(); // от высокого к низкому
+        return a->getPriority() > b->getPriority(); 
         });
 }
 

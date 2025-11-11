@@ -1,4 +1,4 @@
-// Точка входа будет здесь
+
 #include <windows.h>
 #include <QApplication>
 #include "../gui/mainwindow.h"
