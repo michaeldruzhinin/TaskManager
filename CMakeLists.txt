@@ -5,6 +5,7 @@ set(CMAKE_CXX_STANDARD 17)
 
 find_package(Qt6 COMPONENTS Widgets REQUIRED)
 
-add_subdirectory(src/core)
-add_subdirectory(src/gui)
-add_subdirectory(src/app)
+add_subdirectory(core)
+add_subdirectory(gui)
+
+add_subdirectory(app)

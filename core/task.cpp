@@ -1,4 +1,4 @@
-// Реализация будет здесь
+
 // Конструктор
 #include "task.h"
 Task::Task(const std::string& title, const std::string& description, int priority)
@@ -41,11 +41,30 @@ void Task::serialize(std::ostream& out) const {
         << completed << '\n';
 }
 
+// Десериализация(устаревшая)
+//void Task::deserialize(std::istream& in) {
+//    std::getline(in, title);
+//    std::getline(in, description);
+//    in >> priority;
+//    in >> completed;
+//    in.ignore(); // убрать перевод строки после чтения completed
+//}
+
 // Десериализация
-void Task::deserialize(std::istream& in) {
+Task Task::deserialize(std::istream& in) {
+    std::string title, description;
+    int priority;
+    bool completed;
+
     std::getline(in, title);
     std::getline(in, description);
     in >> priority;
     in >> completed;
-    in.ignore(); // убрать перевод строки после чтения completed
+    in.ignore(); // убрать \n после completed
+
+    Task task(title, description, priority);
+    if (completed) task.markComplete();
+    return task;
 }
+
+
